@@ -1,0 +1,73 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_settings",
+  "info": {
+    "singularName": "home-setting",
+    "pluralName": "home-settings",
+    "displayName": "Home Settings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "widgets.banner",
+      "required": true
+    },
+    "products": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "widgets.home-product",
+      "required": false
+    },
+    "services": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "widgets.home-product"
+    },
+    "article": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "widgets.home-product"
+    },
+    "aboutUs": {
+      "displayName": "HAboutUs",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "widgets.h-about-us"
+    }
+  }
+}

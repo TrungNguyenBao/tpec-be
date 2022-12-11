@@ -1,0 +1,154 @@
+poly:
+  apps: # each app is a chart
+    tpec-be:
+      name: tpec-be # this equals to nameOverride:
+      enabled: true
+      fullnameOverride: ""
+      deployType: Deployment # Deployment | StatefulSet - case sensitivity, required
+
+      #========== Chart manifest override ==========#
+      chartName: "tpec-be" # chart name override
+      chartVersion: "" # chartVersion override
+      appVersion: "" # appVersion override
+
+      #========== Deployment manifest #==========#
+      extraLabels: {}
+        # owner: platform
+        # app: main
+      replicaCount: 1
+      strategy: RollingUpdate # or Recreate, default RollingUpdate
+      progressDeadlineSeconds: 600 # default 600
+
+      # spec.template.metadata
+      metadata:
+        name: ""
+        podAnnotations:
+          vault.hashicorp.com/agent-inject: "true"
+          vault.hashicorp.com/auth-path: "auth/kubernetes-dev"
+          vault.hashicorp.com/agent-pre-populate-only: "true"
+          vault.hashicorp.com/role: "fedu-tpec-be-dev-ro"
+          vault.hashicorp.com/agent-inject-secret-config.env: "secret/data/projects/funzy/tpec-be/dev"
+          vault.hashicorp.com/agent-inject-template-config.env: |
+            {{ with secret "secret/data/projects/funzy/tpec-be/dev" }}
+            export HOST={{ .Data.data.HOST }}
+            export PORT={{ .Data.data.PORT }}
+            export DATABASE_NAME={{ .Data.data.DATABASE_NAME }}
+            export DATABASE_HOST={{ .Data.data.DATABASE_HOST }}
+            export DATABASE_PORT={{ .Data.data.DATABASE_PORT }}
+            export DATABASE_USERNAME={{ .Data.data.DATABASE_USERNAME }}
+            export DATABASE_PASSWORD={{ .Data.data.DATABASE_PASSWORD }}
+            {{ end }}
+        extraLabels:
+          sidecar-injector: enabled
+
+      # spec.template.spec
+      imagePullSecrets:
+        - name: regcred
+      hostAliases: []
+        # - ip: "192.168.8.103"
+        #   hostnames:
+        #     - "mysql"
+        #     - "redis"
+        #     - "rabbitmq"
+      podSecurityContext: {}
+
+      # spec.template.spec.containers
+      securityContext: {}
+      image:
+        repository: registry.ftech.ai/funzy/tpec-be
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        tag: "latest"
+      command: ["/bin/sh", "-c"]
+      runtimeArgs: [". /vault/secrets/config.env; yarn start"]
+      env: {}
+        # TZ: "Asia/Ho_Chi_Minh"
+      # TODO: envFrom need to be optimized, should not use postfix like this, can have fullname case
+      envFrom: [] # list of postfix
+        # - main # Release.Name-postfix
+        # - common
+      ports:
+        - name: http
+          containerPort: 1337
+          protocol: TCP
+      livenessProbe: {}
+        # httpGet:
+        #   path: /
+        #   port: http
+      readinessProbe: {}
+        # httpGet:
+        #   path: /
+        #   port: http
+      resources:
+        limits:
+          cpu: 500m
+          memory: 500Mi
+        requests:
+          cpu: 300m
+          memory: 500Mi
+
+      volumeMounts:
+        - name: tpec-be-dev-volume
+          mountPath: /usr/src/app/public/uploads
+
+      # spec.template.spec.volumes
+      volumes:
+        - name: tpec-be-dev-volume
+          persistentVolumeClaim:
+            claimName: tpec-be-dev-volume
+      
+      #========== ServiceAccount manifest #==========#
+      serviceAccount:
+        create: true
+        annotations: {}
+        name: ""
+        automountServiceAccountToken: false
+      
+      #========== Service manifest #==========#
+      service:
+        enabled: true
+        type: ClusterIP
+        port: 1337
+        targetPort: 1337
+        name: http
+      
+      #========== Ingress manifest #==========#
+      ingress:
+        enabled: true
+        className: ""
+        annotations: 
+          kubernetes.io/ingress.class: nginx
+          kubernetes.io/tls-acme: "true"
+          nginx.ingress.kubernetes.io/proxy-body-size: 1000m
+        hosts:
+          - host: api-tournament.dev.ftech.ai
+            paths:
+              - path: /
+                pathType: Prefix
+        tls: []
+          # - secretName: chart-example-tls
+          #   hosts:
+          #     - chart-example.local
+      
+      #========== PVC manifest #==========#
+      pvc:
+        create: true
+        name: tpec-be-dev-volume
+        accessMode: ["ReadWriteOnce"]
+        size: 20Gi
+        storageClass:
+          enabled: false
+          name: ""
+        annotations:
+          helm.sh/resource-policy: "keep"
+
+      #========== HPA manifest #==========#
+      autoscaling:
+        enabled: false
+        minReplicas: 1
+        maxReplicas: 5
+        targetCPUUtilizationPercentage: 80
+        targetMemoryUtilizationPercentage: 80
+
+      #========== ConfigMap manifest #==========#
+      configMaps: []

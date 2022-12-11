@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_widgets_h_aboutuses",
+  "info": {
+    "displayName": "HAboutUs",
+    "icon": "anchor"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "aboutus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "widgets.home-about-us"
+    }
+  }
+}

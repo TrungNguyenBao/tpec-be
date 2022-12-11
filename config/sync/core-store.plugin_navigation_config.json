@@ -1,0 +1,33 @@
+{
+  "key": "plugin_navigation_config",
+  "value": {
+    "additionalFields": [],
+    "contentTypes": [
+      "api::header-setting.header-setting",
+      "api::footer-setting.footer-setting"
+    ],
+    "contentTypesNameFields": {
+      "default": [
+        "title",
+        "subject",
+        "name"
+      ],
+      "api::header-setting.header-setting": [
+        "nav"
+      ]
+    },
+    "contentTypesPopulate": {},
+    "allowedLevels": 2,
+    "gql": {
+      "navigationItemRelated": [
+        "HeaderSetting",
+        "FooterSetting"
+      ]
+    },
+    "i18nEnabled": true,
+    "pruneObsoleteI18nNavigations": false
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

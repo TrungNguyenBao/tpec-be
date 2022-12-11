@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_widgets_nav_dynamics",
+  "info": {
+    "displayName": "NavDynamic",
+    "icon": "equals",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
+    "menuChildren": {
+      "displayName": "NavChildren",
+      "type": "component",
+      "repeatable": false,
+      "component": "widgets.nav-children"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_widgets_home_aboutuses",
+  "info": {
+    "displayName": "HomeAboutUs",
+    "icon": "clipboard-list"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

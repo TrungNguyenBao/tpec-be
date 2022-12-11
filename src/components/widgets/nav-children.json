@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_widgets_nav_children",
+  "info": {
+    "displayName": "NavChildren",
+    "icon": "equals"
+  },
+  "options": {},
+  "attributes": {
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    }
+  }
+}

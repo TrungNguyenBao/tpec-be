@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_widgets_menu_items",
+  "info": {
+    "displayName": "MenuItem",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "isExternalLink": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

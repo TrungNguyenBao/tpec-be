@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_widgets_menus",
+  "info": {
+    "displayName": "Menu",
+    "icon": "arrows-alt",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "menus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "widgets.menu-item",
+      "required": true
+    }
+  }
+}

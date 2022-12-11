@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_widgets_banners",
+  "info": {
+    "displayName": "Banner",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
