@@ -12,10 +12,9 @@
       "required": true
     },
     "menus": {
-      "type": "component",
-      "repeatable": true,
-      "component": "widgets.menu-item",
-      "required": true
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
     }
   }
 }
