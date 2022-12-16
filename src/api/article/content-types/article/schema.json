@@ -44,21 +44,6 @@
       "type": "richtext",
       "required": true
     },
-    "category": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "technical-assistance",
-        "other",
-        "hand-book"
-      ],
-      "default": "other",
-      "required": true
-    },
     "thumbImage": {
       "type": "media",
       "multiple": false,
@@ -80,6 +65,12 @@
       },
       "type": "text",
       "required": true
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "articles"
     }
   }
 }

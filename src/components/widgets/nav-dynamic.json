@@ -7,19 +7,10 @@
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
     "article": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::article.article"
-    },
-    "menuChildren": {
-      "displayName": "NavChildren",
-      "type": "component",
-      "repeatable": false,
-      "component": "widgets.nav-children"
     }
   }
 }
