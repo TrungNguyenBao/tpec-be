@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2022-12-16T09:21:40.576Z"
+    "x-generation-date": "2023-02-13T07:58:19.496Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5498,11 +5498,11 @@
           "phoneNumber",
           "hotline",
           "email",
-          "address",
-          "office",
           "defaultSeo",
           "nameOfCompany",
           "locationMap",
+          "address",
+          "office",
           "locale"
         ],
         "type": "object",
@@ -5527,12 +5527,6 @@
           "email": {
             "type": "string",
             "format": "email"
-          },
-          "address": {
-            "type": "string"
-          },
-          "office": {
-            "type": "string"
           },
           "footerMenu": {
             "type": "array",
@@ -5671,6 +5665,12 @@
           "locationMap": {
             "type": "string"
           },
+          "address": {
+            "type": "string"
+          },
+          "office": {
+            "type": "string"
+          },
           "locale": {
             "type": "string"
           }
@@ -5688,11 +5688,11 @@
               "phoneNumber",
               "hotline",
               "email",
-              "address",
-              "office",
               "defaultSeo",
               "nameOfCompany",
-              "locationMap"
+              "locationMap",
+              "address",
+              "office"
             ],
             "type": "object",
             "properties": {
@@ -5716,12 +5716,6 @@
               "email": {
                 "type": "string",
                 "format": "email"
-              },
-              "address": {
-                "type": "string"
-              },
-              "office": {
-                "type": "string"
               },
               "footerMenu": {
                 "type": "array",
@@ -5858,6 +5852,12 @@
                 "type": "string"
               },
               "locationMap": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "office": {
                 "type": "string"
               },
               "locale": {
@@ -6255,12 +6255,6 @@
           "email": {
             "type": "string",
             "format": "email"
-          },
-          "address": {
-            "type": "string"
-          },
-          "office": {
-            "type": "string"
           },
           "footerMenu": {
             "type": "array",
@@ -8331,6 +8325,12 @@
           "locationMap": {
             "type": "string"
           },
+          "address": {
+            "type": "string"
+          },
+          "office": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -8781,12 +8781,6 @@
                     "email": {
                       "type": "string",
                       "format": "email"
-                    },
-                    "address": {
-                      "type": "string"
-                    },
-                    "office": {
-                      "type": "string"
                     },
                     "footerMenu": {
                       "type": "array",
@@ -10857,6 +10851,12 @@
                     "locationMap": {
                       "type": "string"
                     },
+                    "address": {
+                      "type": "string"
+                    },
+                    "office": {
+                      "type": "string"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -11333,12 +11333,6 @@
                   "email": {
                     "type": "string",
                     "format": "email"
-                  },
-                  "address": {
-                    "type": "string"
-                  },
-                  "office": {
-                    "type": "string"
                   },
                   "footerMenu": {
                     "type": "array",
@@ -13407,6 +13401,12 @@
                     "type": "string"
                   },
                   "locationMap": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "office": {
                     "type": "string"
                   },
                   "createdAt": {
